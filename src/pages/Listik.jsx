@@ -8,7 +8,7 @@ const POETS_DATABASE = [
   // --- 1. ERKEN DÖNEM VE KLASİK KURMANCÎ (10-17. YY) ---
   { 
     id: 'c1', name: 'Baba Tahirê Uryan', category: 'classic', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/47/Baba_Tahir.jpg', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Baba_Tahir.jpg/330px-Baba_Tahir.jpg', 
     hints: ['Sedsala 11an', 'Rubayî', 'Hemedan', 'Mîstîk'], 
     bio: 'Yek ji helbestvanên herî kevn ên Rojhilatê ye. Bi "Dubeytî"yên xwe yên mîstîk û felsefî tê nasîn.' 
   },
@@ -20,13 +20,13 @@ const POETS_DATABASE = [
   },
   { 
     id: 'c3', name: 'Melayê Batê', category: 'classic', 
-    image: 'https://i.pinimg.com/736x/5c/46/9d/5c469d32660504f748062f6971625328.jpg', 
+    image: 'https://kurdishhistory.org/wp-content/uploads/2021/05/Melaye-Bate.jpg', 
     hints: ['Mewlûda Kurdî', 'Hekarî', 'Klasîk', 'Sedsala 15an'], 
     bio: 'Nivîskarê Mewlûda Kurdî ya herî navdar e ku heta îro di mizgeft û şînan de tê xwendin.' 
   },
   { 
     id: 'c4', name: 'Melayê Cizîrî', category: 'classic', 
-    image: '/ciziri.jpg', // PUBLIC (Senin Dosyan)
+    image: '/ciziri.jpg', // PUBLIC DOSYASI
     hints: ['Mîrê Evînê', 'Dîwan', 'Cizîra Botan', 'Tesewif'], 
     bio: 'Lûtkeya helbesta klasîk a kurmancî û tesewifê ye. Di helbestên xwe de evîna xwedayî bi hostayî hunandiye.' 
   },
@@ -44,7 +44,7 @@ const POETS_DATABASE = [
   },
   { 
     id: 'c7', name: 'Ehmedê Xanî', category: 'classic', 
-    image: '/xani.jpg', // PUBLIC (Senin Dosyan)
+    image: '/xani.jpg', // PUBLIC DOSYASI
     hints: ['Mem û Zîn', 'Fîlozof', 'Çiyayê Agirî', 'Neteweyî'], 
     bio: 'Fîlozof û helbestvanê mezin ê kurd e. Bi şahesera xwe "Mem û Zîn", bingeha bîra neteweyî daniye.' 
   },
@@ -114,13 +114,13 @@ const POETS_DATABASE = [
   },
   { 
     id: 'b2', name: 'Salem', category: 'classic', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Salem_Kurdish_Poet.jpg', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Salem_Kurdish_Poet.jpg/220px-Salem_Kurdish_Poet.jpg', 
     hints: ['Mersiye', 'Baban', 'Silêmanî', 'Sedsala 19an'], 
     bio: 'Bi mersiyeyên xwe yên xemgîn ên ji bo rûxandina Mîrnişîna Baban tê nasîn.' 
   },
   { 
     id: 'b3', name: 'Kurdî (Mistefa Beg)', category: 'classic', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Kurdi+Mistefa', 
     hints: ['Lîrîk', 'Soranî', 'Evîn', 'Silêmanî'], 
     bio: 'Helbestên evînî û lîrîk bi zimanekî zelal nivîsandiye.' 
   },
@@ -156,19 +156,19 @@ const POETS_DATABASE = [
   },
   { 
     id: 'b9', name: 'Edeb (Misbah)', category: 'classic', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Edeb', 
     hints: ['Soranî', 'Evîn', 'Nexweşî', 'Sedsala 19an'], 
     bio: 'Helbestvanekî lîrîk ê serdema Baban e ku jiyaneke bi êş derbas kiriye.' 
   },
   { 
     id: 'b10', name: 'Siyehpûş', category: 'classic', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Siyehpos', 
     hints: ['Seyfûlmutûk', 'Destan', 'Urmiye', 'Klasîk'], 
     bio: 'Bi destana xwe ya navdar "Seyfûlmutûk û Bedîûlcemal" tê nasîn.' 
   },
   { 
     id: 'b11', name: 'Pertew Begê Hekarî', category: 'classic', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Pertew+Beg', 
     hints: ['Hekarî', 'Dîwan', 'Evîn', 'Sedsala 19an'], 
     bio: 'Ji Hekariyê dengê helbesta klasîk û evînî ye.' 
   },
@@ -188,7 +188,7 @@ const POETS_DATABASE = [
   },
   { 
     id: 'm2', name: 'Zîwer', category: 'modern', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Ziwer', 
     hints: ['Niştiman', 'Soranî', 'Mamoste', 'Sedsala 20an'], 
     bio: 'Helbestên niştimanî û perwerdeyî nivîsandiye.' 
   },
@@ -256,13 +256,13 @@ const POETS_DATABASE = [
   // --- 5. ÇAĞDAŞ DÖNEM VE SOVYET (1950+) ---
   { 
     id: 's1', name: 'Fêrîkê Ûsiv', category: 'modern', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Ferike+Usiv', 
     hints: ['Yêrêvan', 'Lîrîk', 'Sovyet', 'Pamp'], 
     bio: 'Dengê lîrîk û paqij ê helbesta kurdên Sovyetê ye. Helbesta "Pamp" pir navdar e.' 
   },
   { 
     id: 's2', name: 'Şikoyê Hesen', category: 'modern', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Sikoye+Hesen', 
     hints: ['Kaladoçka', 'Kafkasya', 'Hêvî', 'Sovyet'], 
     bio: 'Dengê xemgîn û hesretê yê kurdên Kafkasyayê ye. Helbesta "Kaladoçka" şahesera wî ye.' 
   },
@@ -298,19 +298,19 @@ const POETS_DATABASE = [
   },
   { 
     id: 's8', name: 'Berken Bereh', category: 'modern', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Berken+Bereh', 
     hints: ['Dilê Min', 'Şirnex', 'Nûjen', 'Helbest'], 
     bio: 'Helbestvanekî girîng ê nifşê îro ye. Zimanê wî herikbar û lîrîk e.' 
   },
   { 
     id: 's9', name: 'Rênas Jiyan', category: 'modern', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Renas+Jiyan', 
     hints: ['Janya', 'Post-Modern', 'Qoser', 'Mexzena Xwînê'], 
     bio: 'Nûnerê herî girîng ê helbesta postmodern a kurdî ye. Şêwazeke wî ya taybet heye.' 
   },
   { 
     id: 's10', name: 'Kawa Nemir', category: 'modern', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
+    image: 'https://via.placeholder.com/400x600?text=Kawa+Nemir', 
     hints: ['Werger', 'Ulysses', 'Hamlet', 'Balyoz'], 
     bio: 'Bi wergerên xwe yên şaheser (Hamlet, Ulysses) zimanê kurdî gihandiye asteke bilind.' 
   },
