@@ -4,30 +4,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, RefreshCcw, Star, HelpCircle, Maximize, Minimize, Settings, Play, BookOpen, Clock, Info } from 'lucide-react';
 
 // --- VERİTABANI: 50 KÜRT ŞAİR VE YAZAR ---
-// Not: 'ciziri', 'xani', 'serko', 'cegerxwin' hariç diğerleri internetten çekiliyor.
 const POETS_DATABASE = [
-  // 1. ERKEN DÖNEM VE KLASİK KURMANCÎ (10-17. YY)
+  // --- 1. ERKEN DÖNEM VE KLASİK KURMANCÎ (10-17. YY) ---
   { 
     id: 'c1', name: 'Baba Tahirê Uryan', category: 'classic', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Baba_Tahir.jpg/330px-Baba_Tahir.jpg', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/4/47/Baba_Tahir.jpg', 
     hints: ['Sedsala 11an', 'Rubayî', 'Hemedan', 'Mîstîk'], 
     bio: 'Yek ji helbestvanên herî kevn ên Rojhilatê ye. Bi "Dubeytî"yên xwe yên mîstîk û felsefî tê nasîn.' 
   },
   { 
     id: 'c2', name: 'Elî Herîrî', category: 'classic', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Eli_Heriri.jpg', // Temsili
+    image: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Eli_Heriri.jpg', 
     hints: ['Helbestvanê Pêşîn', 'Hekarî', 'Sedsala 11an', 'Klasîk'], 
-    bio: 'Yek ji pêşengên edebiyata kurdî ya klasîk tê qebûlkirin. Ji herêma Hekariyê ye.' 
+    bio: 'Wekî yekem helbestvanê klasîk ê kurd tê naskirin. Ji herêma Hekariyê ye.' 
   },
   { 
     id: 'c3', name: 'Melayê Batê', category: 'classic', 
-    image: 'https://i.ytimg.com/vi/1Qx8Z0w1Xw8/maxresdefault.jpg', // Temsili (Mewlûd)
+    image: 'https://i.pinimg.com/736x/5c/46/9d/5c469d32660504f748062f6971625328.jpg', 
     hints: ['Mewlûda Kurdî', 'Hekarî', 'Klasîk', 'Sedsala 15an'], 
     bio: 'Nivîskarê Mewlûda Kurdî ya herî navdar e ku heta îro di mizgeft û şînan de tê xwendin.' 
   },
   { 
     id: 'c4', name: 'Melayê Cizîrî', category: 'classic', 
-    image: '/ciziri.jpg', // PUBLIC KLASÖRÜNDEN
+    image: '/ciziri.jpg', // PUBLIC (Senin Dosyan)
     hints: ['Mîrê Evînê', 'Dîwan', 'Cizîra Botan', 'Tesewif'], 
     bio: 'Lûtkeya helbesta klasîk a kurmancî û tesewifê ye. Di helbestên xwe de evîna xwedayî bi hostayî hunandiye.' 
   },
@@ -39,39 +38,39 @@ const POETS_DATABASE = [
   },
   { 
     id: 'c6', name: 'Yusuf Yaska', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Yusuf+Yaska', // Resim bulunamadı, placeholder
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', // Resim bulunamadı
     hints: ['Goranî', 'Sedsala 16an', 'Helbesta Kevn', 'Şarezûr'], 
     bio: 'Yek ji nûnerên destpêkê yên edebiyata zaravayê Goranî ye.' 
   },
   { 
     id: 'c7', name: 'Ehmedê Xanî', category: 'classic', 
-    image: '/xani.jpg', // PUBLIC KLASÖRÜNDEN
+    image: '/xani.jpg', // PUBLIC (Senin Dosyan)
     hints: ['Mem û Zîn', 'Fîlozof', 'Çiyayê Agirî', 'Neteweyî'], 
     bio: 'Fîlozof û helbestvanê mezin ê kurd e. Bi şahesera xwe "Mem û Zîn", bingeha bîra neteweyî daniye.' 
   },
   { 
     id: 'c8', name: 'Îsmaîl Beyazîdî', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Ismail+Beyazidi', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png',
     hints: ['Ferheng', 'Gulzar', 'Bazîd', 'Klasîk'], 
     bio: 'Di serdema klasîk de ferheng û helbestên girîng nivîsandiye.' 
   },
   { 
     id: 'c9', name: 'Şêx Şemsedînê Exlatî', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Sex+Semsedin', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png',
     hints: ['Exlat (Bitlîs)', 'Tesewif', 'Sedsala 17an', 'Helbest'], 
     bio: 'Bi helbestên xwe yên tesewifî tê nasîn.' 
   },
   { 
     id: 'c10', name: 'Mîna', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Mina', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png',
     hints: ['Jina Helbestvan', 'Sedsala 17an', 'Evîn', 'Klasîk'], 
     bio: 'Yek ji jinên helbestvan ên kêm ên wê serdemê ye ku navê wê gihîştiye me.' 
   },
 
-  // 2. GORANÎ / HEWRAMÎ EKOLÜ (18. YY)
+  // --- 2. GORANÎ / HEWRAMÎ EKOLÜ (18. YY) ---
   { 
     id: 'g1', name: 'Mele Perîşan', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Mele+Perisan', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Goranî', 'Dînewer', 'Sedsala 14an', 'Mîstîk'], 
     bio: 'Bi zaravayê Goranî helbestên mîstîk û dînî nivîsandiye.' 
   },
@@ -89,13 +88,13 @@ const POETS_DATABASE = [
   },
   { 
     id: 'g4', name: 'Sareng Elmas Xan', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Elmas+Xan', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Şehname', 'Goranî', 'Destan', 'Sedsala 18an'], 
     bio: 'Kevneşopiya destana Şehnameyê aniye nav edebiyata kurdî.' 
   },
   { 
     id: 'g5', name: 'Şeyda Hewramî', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Seyda+Hewrami', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Hewraman', 'Goranî', 'Sedsala 18an', 'Dîwan'], 
     bio: 'Helbestvanekî girîng ê herêma Hewramanê ye.' 
   },
@@ -106,7 +105,7 @@ const POETS_DATABASE = [
     bio: 'Lûtkeya helbesta Goranî û tesewifê ye. Şagirtên wî bandoreke mezin li edebiyata kurdî kirine.' 
   },
 
-  // 3. BABAN EKOLÜ VE SORANÎ (19. YY)
+  // --- 3. BABAN EKOLÜ VE SORANÎ (19. YY) ---
   { 
     id: 'b1', name: 'Nalî', category: 'classic', 
     image: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Nali_Sherzor.jpg', 
@@ -115,13 +114,13 @@ const POETS_DATABASE = [
   },
   { 
     id: 'b2', name: 'Salem', category: 'classic', 
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Salem_Kurdish_Poet.jpg/220px-Salem_Kurdish_Poet.jpg', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Salem_Kurdish_Poet.jpg', 
     hints: ['Mersiye', 'Baban', 'Silêmanî', 'Sedsala 19an'], 
     bio: 'Bi mersiyeyên xwe yên xemgîn ên ji bo rûxandina Mîrnişîna Baban tê nasîn.' 
   },
   { 
     id: 'b3', name: 'Kurdî (Mistefa Beg)', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Kurdi+Mistefa', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Lîrîk', 'Soranî', 'Evîn', 'Silêmanî'], 
     bio: 'Helbestên evînî û lîrîk bi zimanekî zelal nivîsandiye.' 
   },
@@ -132,7 +131,7 @@ const POETS_DATABASE = [
     bio: 'Jina yekemîn a dîrokzan li Rojhilata Navîn e. Hem helbestvan hem jî serwerê mîrnişîna Erdelanê bû.' 
   },
   { 
-    id: 'b5', name: 'Mehwî', category: 'classic', 
+    id: 'b5', name: 'Mahwi', category: 'classic', 
     image: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Mahwi.jpg', 
     hints: ['Soranî', 'Felsefe', 'Tesewif', 'Mehkema'], 
     bio: 'Helbestên kûr ên tesewifî û felsefî nivîsandiye.' 
@@ -157,30 +156,30 @@ const POETS_DATABASE = [
   },
   { 
     id: 'b9', name: 'Edeb (Misbah)', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Edeb', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Soranî', 'Evîn', 'Nexweşî', 'Sedsala 19an'], 
     bio: 'Helbestvanekî lîrîk ê serdema Baban e ku jiyaneke bi êş derbas kiriye.' 
   },
   { 
     id: 'b10', name: 'Siyehpûş', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Siyehpos', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Seyfûlmutûk', 'Destan', 'Urmiye', 'Klasîk'], 
     bio: 'Bi destana xwe ya navdar "Seyfûlmutûk û Bedîûlcemal" tê nasîn.' 
   },
   { 
     id: 'b11', name: 'Pertew Begê Hekarî', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Pertew+Beg', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Hekarî', 'Dîwan', 'Evîn', 'Sedsala 19an'], 
     bio: 'Ji Hekariyê dengê helbesta klasîk û evînî ye.' 
   },
   { 
     id: 'b12', name: 'Harîq', category: 'classic', 
-    image: 'https://via.placeholder.com/400x600?text=Hariq', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Soranî', 'Şewitî', 'Sedsala 19an', 'Dîwan'], 
     bio: 'Helbestvanekî girîng ê sedsala 19an e. Navê wî tê wateya "Şewitî".' 
   },
 
-  // 4. MODERN DÖNEM (20. YY)
+  // --- 4. MODERN DÖNEM (20. YY) ---
   { 
     id: 'm1', name: 'Pîremêrd', category: 'modern', 
     image: 'https://upload.wikimedia.org/wikipedia/commons/6/64/Piremerd.jpg', 
@@ -189,7 +188,7 @@ const POETS_DATABASE = [
   },
   { 
     id: 'm2', name: 'Zîwer', category: 'modern', 
-    image: 'https://via.placeholder.com/400x600?text=Ziwer', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Niştiman', 'Soranî', 'Mamoste', 'Sedsala 20an'], 
     bio: 'Helbestên niştimanî û perwerdeyî nivîsandiye.' 
   },
@@ -207,7 +206,7 @@ const POETS_DATABASE = [
   },
   { 
     id: 'm5', name: 'Cegerxwîn', category: 'modern', 
-    image: '/cegerxwin.jpg', // PUBLIC KLASÖRÜNDEN
+    image: '/cegerxwin.jpg', // PUBLIC DOSYASI
     hints: ['Kîme Ez?', 'Karker û Cotkar', 'Stockholm', 'Mamoste'], 
     bio: 'Dengê şoreş û têkoşîna gelê kurd e. Helbestên wî yên civakî û neteweyî pir bandor li gel kirine.' 
   },
@@ -225,7 +224,7 @@ const POETS_DATABASE = [
   },
   { 
     id: 'm8', name: 'Qedrî Can', category: 'modern', 
-    image: 'https://via.placeholder.com/400x600?text=Qedri+Can', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Qedr%C3%AE_Can.jpg', 
     hints: ['Helbesta Nûjen', 'Moskova', 'Çîrok', 'Dêrik'], 
     bio: 'Pêşengê helbesta nûjen li Rojavayê Kurdistanê ye. Çîrokên wî jî navdar in.' 
   },
@@ -254,34 +253,34 @@ const POETS_DATABASE = [
     bio: 'Siyasetmedar, ronakbîr û çîroknivîsekî hêja ye. Yek ji damezrînerên PDK-S.' 
   },
 
-  // 5. ÇAĞDAŞ DÖNEM VE SOVYET
+  // --- 5. ÇAĞDAŞ DÖNEM VE SOVYET (1950+) ---
   { 
     id: 's1', name: 'Fêrîkê Ûsiv', category: 'modern', 
-    image: 'https://via.placeholder.com/400x600?text=Ferike+Usiv', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Yêrêvan', 'Lîrîk', 'Sovyet', 'Pamp'], 
     bio: 'Dengê lîrîk û paqij ê helbesta kurdên Sovyetê ye. Helbesta "Pamp" pir navdar e.' 
   },
   { 
     id: 's2', name: 'Şikoyê Hesen', category: 'modern', 
-    image: 'https://via.placeholder.com/400x600?text=Sikoye+Hesen', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Kaladoçka', 'Kafkasya', 'Hêvî', 'Sovyet'], 
     bio: 'Dengê xemgîn û hesretê yê kurdên Kafkasyayê ye. Helbesta "Kaladoçka" şahesera wî ye.' 
   },
   { 
     id: 's3', name: 'Şêrko Bêkes', category: 'modern', 
-    image: '/serko.jpg', // PUBLIC KLASÖRÜNDEN
+    image: '/serko.jpg', // PUBLIC DOSYASI
     hints: ['Împeratorê Helbestê', 'Helebçe', 'Pepûle', 'Silêmanî'], 
     bio: 'Nûjenkerê helbesta kurdî ya sedsala 20an e. Wekî "Împeratorê Helbestê" tê nasîn.' 
   },
   { 
     id: 's4', name: 'Latîf Helmet', category: 'modern', 
-    image: 'https://via.placeholder.com/400x600?text=Latif+Helmet', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Sûrrealîzm', 'Kerkûk', 'Nûjen', 'Pêşeng'], 
     bio: 'Bi îmgiyên xwe yên nûjen, zarokî û sûrrealîst tê nasîn. Pêşengê nûjeniyê ye.' 
   },
   { 
     id: 's5', name: 'Refîq Sabir', category: 'modern', 
-    image: 'https://via.placeholder.com/400x600?text=Refiq+Sabir', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Helebçe', 'Trajedî', 'Swêd', 'Helbest'], 
     bio: 'Helbestvanê trajedî û êşa Helebçeyê ye. Helbesta wî ya li ser kîmyabaranê pir bi bandor e.' 
   },
@@ -299,19 +298,19 @@ const POETS_DATABASE = [
   },
   { 
     id: 's8', name: 'Berken Bereh', category: 'modern', 
-    image: 'https://via.placeholder.com/400x600?text=Berken+Bereh', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Dilê Min', 'Şirnex', 'Nûjen', 'Helbest'], 
     bio: 'Helbestvanekî girîng ê nifşê îro ye. Zimanê wî herikbar û lîrîk e.' 
   },
   { 
     id: 's9', name: 'Rênas Jiyan', category: 'modern', 
-    image: 'https://via.placeholder.com/400x600?text=Renas+Jiyan', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Janya', 'Post-Modern', 'Qoser', 'Mexzena Xwînê'], 
     bio: 'Nûnerê herî girîng ê helbesta postmodern a kurdî ye. Şêwazeke wî ya taybet heye.' 
   },
   { 
     id: 's10', name: 'Kawa Nemir', category: 'modern', 
-    image: 'https://via.placeholder.com/400x600?text=Kawa+Nemir', 
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png', 
     hints: ['Werger', 'Ulysses', 'Hamlet', 'Balyoz'], 
     bio: 'Bi wergerên xwe yên şaheser (Hamlet, Ulysses) zimanê kurdî gihandiye asteke bilind.' 
   },
@@ -388,16 +387,16 @@ const Listik = () => {
     }
   };
 
-  // --- ARKA PLAN (DESENLİ & LOGO) ---
+  // --- ARKA PLAN ---
   const Background = () => (
     <div className="absolute inset-0 z-0 bg-[#0f172a] overflow-hidden pointer-events-none">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-[#0f172a] to-emerald-900/40 z-10"></div>
-      <div className="absolute inset-0 z-0 opacity-10" 
+      <div className="absolute inset-0 z-0 opacity-[0.03]" 
            style={{
              backgroundImage: 'url(/logo.png)',
-             backgroundSize: '120px',
+             backgroundSize: '100px',
              backgroundRepeat: 'repeat',
-             transform: 'rotate(-5deg) scale(1.1)'
+             transform: 'rotate(-10deg) scale(1.2)'
            }}
       ></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[150px] z-10"></div>
@@ -407,7 +406,7 @@ const Listik = () => {
   // 1. GİRİŞ EKRANI
   if (gameState === 'setup') {
     return (
-      <div className="h-[100dvh] w-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      <div className="h-[100dvh] w-screen bg-[#0f172a] text-white flex flex-col items-center justify-center p-4 relative overflow-hidden">
         <Helmet><title>Sazkirin - Lîstika Helbestvanan</title></Helmet>
         <Background />
         
