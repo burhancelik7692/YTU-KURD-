@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ChevronLeft, RefreshCcw, Star, HelpCircle, Maximize, Minimize, Settings, Play, BookOpen, Users, Info } from 'lucide-react';
+import { ChevronRight, ChevronLeft, RefreshCcw, Star, HelpCircle, Maximize, Minimize, Settings, Play, BookOpen, Clock, Info } from 'lucide-react';
 
 // --- VERİTABANI: 50+ KÜRT ŞAİR VE YAZAR ---
 const POETS_DATABASE = [
@@ -233,16 +233,6 @@ const Listik = () => {
           </div>
         </div>
 
-        {/* İlerleme Çubuğu */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-white/10 z-50">
-          <motion.div 
-            className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500" 
-            initial={{ width: 0 }}
-            animate={{ width: `${((currentIndex + 1) / activeQuestions.length) * 100}%` }}
-            transition={{ duration: 0.5 }}
-          />
-        </div>
-
         {/* Orta Alan (İçerik) */}
         <div className="flex-1 flex flex-col items-center justify-center overflow-y-auto px-4 py-2 scrollbar-hide z-30">
           <AnimatePresence mode='wait'>
@@ -254,9 +244,14 @@ const Listik = () => {
               transition={{ duration: 0.4 }}
               className="flex flex-col items-center w-full max-w-5xl"
             >
-              {/* Resim Çerçevesi */}
+              {/* RESİM ÇERÇEVESİ (YTU Kurdî Teması) */}
               <div className="relative mb-8 group w-full max-w-md mx-auto">
-                <div className={`absolute -inset-1 bg-gradient-to-tr rounded-[2.5rem] blur-xl opacity-60 transition duration-700 ${showAnswer ? 'from-blue-600 via-purple-500 to-emerald-500' : 'from-blue-800 to-emerald-800'}`}></div>
+                {/* Glow Efekti */}
+                <div className={`absolute -inset-1 bg-gradient-to-tr rounded-[2.5rem] blur-xl opacity-60 transition duration-700 ${
+                  showAnswer 
+                    ? 'from-blue-600 via-purple-500 to-emerald-500' // Cevap Modu
+                    : 'from-blue-800 to-emerald-800' // Soru Modu
+                }`}></div>
                 
                 <div className="relative p-1 bg-gray-900 rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl">
                   <img 
@@ -269,24 +264,31 @@ const Listik = () => {
                     }}
                   />
                   
+                  {/* Kategori Etiketi */}
                   <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 backdrop-blur-md border border-white/20 rounded-lg text-xs font-bold uppercase tracking-wider text-white ${currentQ.category === 'classic' ? 'bg-amber-600/80' : 'bg-blue-600/80'}`}>
+                    <span className={`px-3 py-1 backdrop-blur-md border border-white/20 rounded-lg text-xs font-bold uppercase tracking-wider text-white ${
+                      currentQ.category === 'classic' ? 'bg-amber-600/80' : 'bg-blue-600/80'
+                    }`}>
                       {currentQ.category === 'classic' ? 'Klasîk' : 'Nûjen'}
                     </span>
                   </div>
                 </div>
 
+                {/* Alt İkon */}
                 <div className={`absolute -bottom-5 -right-5 z-30 p-4 rounded-full shadow-2xl border-4 border-black transition-all duration-500 ${showAnswer ? 'bg-blue-600 scale-110' : 'bg-white text-black animate-pulse'}`}>
                   {showAnswer ? <Star size={32} fill="white" className="text-white"/> : <HelpCircle size={32} className="text-black"/>}
                 </div>
               </div>
 
-              {/* Metin Alanı */}
+              {/* METİN ALANI */}
               {showAnswer ? (
+                // CEVAP
                 <div className="text-center max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
                   <h2 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 mb-6 tracking-wide drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">
                     {currentQ.name}
                   </h2>
+                  
+                  {/* Biyografi Kartı */}
                   <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-lg text-left relative overflow-hidden group hover:bg-white/10 transition-colors">
                     <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-500 to-emerald-500"></div>
                     <h3 className="text-blue-400 font-bold text-sm uppercase tracking-widest mb-2 flex items-center gap-2">
@@ -298,6 +300,7 @@ const Listik = () => {
                   </div>
                 </div>
               ) : (
+                // SORU
                 <div className="text-center w-full">
                   <h2 className="text-7xl md:text-9xl font-black text-white/10 mb-8 tracking-[0.3em] select-none animate-pulse">???</h2>
                   <div className="flex flex-wrap justify-center items-center gap-3 max-w-5xl">
@@ -322,15 +325,36 @@ const Listik = () => {
         {/* 3. ALT KUMANDA PANELİ */}
         <div className="h-28 flex items-center justify-center pb-6 px-4 z-50">
           <div className="flex items-center gap-8 bg-black/60 backdrop-blur-2xl px-10 py-4 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-            <button onClick={handlePrev} disabled={currentIndex === 0 && !showAnswer} className={`p-4 rounded-full transition-all duration-300 group border border-white/5 ${currentIndex === 0 && !showAnswer ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white/10 active:scale-90 hover:border-white/20'}`}>
+            
+            <button 
+              onClick={handlePrev} 
+              disabled={currentIndex === 0 && !showAnswer}
+              className={`p-4 rounded-full transition-all duration-300 group border border-white/5 ${currentIndex === 0 && !showAnswer ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white/10 active:scale-90 hover:border-white/20'}`}
+            >
               <ChevronLeft size={32} className="text-gray-400 group-hover:text-white" />
             </button>
 
-            <button onClick={handleNext} className={`relative flex items-center justify-center w-24 h-24 -mt-8 rounded-full transition-all duration-300 transform shadow-2xl border-[6px] border-black ${showAnswer ? 'bg-gradient-to-br from-yellow-400 to-orange-500 hover:scale-110 hover:shadow-yellow-500/50' : 'bg-gradient-to-br from-blue-600 to-emerald-600 hover:scale-110 hover:shadow-blue-500/50'}`}>
-              {showAnswer ? <ChevronRight size={48} className="text-black ml-1" strokeWidth={4} /> : <HelpCircle size={48} className="text-white" strokeWidth={3} />}
+            {/* MAGIC BUTTON */}
+            <button 
+              onClick={handleNext}
+              className={`relative flex items-center justify-center w-24 h-24 -mt-8 rounded-full transition-all duration-300 transform shadow-2xl border-[6px] border-black ${
+                showAnswer 
+                  ? 'bg-gradient-to-br from-yellow-400 to-orange-500 hover:scale-110 hover:shadow-yellow-500/50' 
+                  : 'bg-gradient-to-br from-blue-600 to-emerald-600 hover:scale-110 hover:shadow-blue-500/50'
+              }`}
+            >
+              {showAnswer ? (
+                <ChevronRight size={48} className="text-black ml-1" strokeWidth={4} />
+              ) : (
+                <HelpCircle size={48} className="text-white" strokeWidth={3} />
+              )}
             </button>
 
-            <button onClick={() => setGameState('setup')} className="p-4 rounded-full transition-all duration-300 group border border-white/5 hover:bg-white/10 active:scale-90 hover:border-white/20" title="Derkeve">
+            <button 
+              onClick={() => setGameState('setup')} 
+              className="p-4 rounded-full transition-all duration-300 group border border-white/5 hover:bg-white/10 active:scale-90 hover:border-white/20"
+              title="Derkeve"
+            >
               <RefreshCcw size={28} className="text-gray-400 group-hover:text-white" />
             </button>
           </div>
@@ -360,6 +384,7 @@ const Listik = () => {
         </div>
         
         <motion.div className="relative z-20 flex flex-col items-center text-center max-w-2xl bg-black/40 backdrop-blur-xl p-12 rounded-[3rem] border border-white/5" initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.8, type: "spring" }}>
+          
           <motion.div className="relative mb-10" animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
             <div className="absolute inset-0 bg-blue-500 rounded-full blur-[80px] opacity-50 animate-pulse"></div>
             <img src="/logo.png" alt="YTU Kurdî" className="w-64 h-64 object-contain relative z-10 drop-shadow-2xl" />
@@ -381,13 +406,3 @@ const Listik = () => {
 };
 
 export default Listik;
-```
-
-### Yayınla 🚀
-
-Terminale şu komutları yazıp gönder:
-
-```bash
-git add .
-git commit -m "Listik sade hal 50 sair YTU Kurdi temasi"
-git push
