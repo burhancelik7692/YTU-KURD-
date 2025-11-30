@@ -164,3 +164,82 @@ const Listik = () => {
                       <motion.span 
                         key={index}
                         initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.5 }}
+                        className="bg-gray-800 text-white px-6 py-2 rounded-full text-xl border border-gray-600"
+                      >
+                        {hint}
+                      </motion.span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* --- CEVAP (ONAY) SLAYTI --- */}
+            {currentData.type === 'answer' && (
+              <div className="flex flex-col items-center">
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="mb-8"
+                >
+                  <Star size={80} className="text-green-500 fill-current" />
+                </motion.div>
+                
+                <img 
+                  src={currentData.image} 
+                  alt={currentData.name} 
+                  className="h-[40vh] object-contain rounded-xl border-4 border-green-500 mb-8 grayscale hover:grayscale-0 transition-all duration-500"
+                />
+                
+                <h1 className="text-6xl font-black text-green-500 mb-4">{currentData.title}</h1>
+                <h2 className="text-4xl text-white font-bold mb-2">{currentData.name}</h2>
+                <p className="text-2xl text-gray-400">{currentData.detail}</p>
+              </div>
+            )}
+
+            {/* --- OYUN SONU SLAYTI --- */}
+            {currentData.type === 'end' && (
+              <div className="flex flex-col items-center">
+                <div className="text-9xl mb-8">🎉</div>
+                <h1 className="text-7xl font-black text-yellow-400 mb-6">{currentData.title}</h1>
+                <h2 className="text-4xl text-white mb-8">{currentData.subtitle}</h2>
+                <p className="text-2xl text-gray-400 mb-12 bg-gray-900 px-8 py-4 rounded-xl border border-gray-700">
+                  {currentData.detail}
+                </p>
+                <button 
+                  onClick={resetGame} 
+                  className="flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full text-xl font-bold hover:bg-gray-200 transition-all"
+                >
+                  <RefreshCcw />
+                  Dîsa Bileyîze
+                </button>
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* --- NAVİGASYON BUTONLARI (Alt Kısım) --- */}
+        {currentData.type !== 'cover' && currentData.type !== 'end' && (
+          <div className="absolute bottom-8 flex gap-8 z-50">
+            <button 
+              onClick={prevSlide}
+              className="bg-gray-800/50 p-4 rounded-full hover:bg-gray-700 transition-all text-white border border-gray-600"
+            >
+              <ChevronLeft size={32} />
+            </button>
+            <button 
+              onClick={nextSlide}
+              className="bg-yellow-500 p-4 rounded-full hover:bg-yellow-400 transition-all text-black shadow-[0_0_20px_rgba(234,179,8,0.5)] scale-110 hover:scale-125"
+            >
+              <ChevronRight size={32} />
+            </button>
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default Listik;
